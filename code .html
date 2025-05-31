@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agrinho 2025 - Construindo um futuro sustentável</title>
+  <style>
+    /* Reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      color: #2c3e50;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+    }
+    header h1 {
+      font-size: 2.75rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 0.3rem;
+      font-family: "Georgia", serif;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    }
+    header p {
+      font-size: 1.25rem;
+      font-weight: 400;
+      font-style: italic;
+      max-width: 700px;
+      margin: 0 auto;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    nav {
+      background: #1b5e20;
+      padding: 0.8rem 1rem;
+      box-shadow: inset 0 -2px 0 rgba(255,255,255,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #a5d6a7;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #e0f2f1;
+      outline: none;
+      text-decoration: underline;
+    }
+    main {
+      flex: 1;
+      padding: 2rem 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .features {
+      display: flex;
+      justify-content: space-around;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .feature {
+      background: white;
+      padding: 1.75rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(46, 125, 50, 0.15);
+      flex: 1 1 280px;
+      max-width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+    .feature:hover, .feature:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 18px rgba(46, 125, 50, 0.3);
+      outline: none;
+    }
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 0.75rem;a
+      user-select: none;
+    }
+    .feature h3 {
+      margin-bottom: 0.5rem;
+      color: #2e7d32;
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+    .feature p {
+      font-size: 1rem;
+      color: #34495e;
+      user-select: text;
+    }
+    .feature-details {
+      display: none;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #1b4d16;
+      background: #d0e8d8;
+      border-radius: 8px;
+      padding: 0.75rem;
+      user-select: text;
+    }
+    .feature.expanded .feature-details {
+      display: block;
+      animation: fadeIn 0.4s ease forwards;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .info-links {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .info-links a {
+      color: #1b4d16;
+      text-decoration: underline;
+      margin-right: 10px;
+    }
+    .info-links a:hover,
+    .info-links a:focus {
+      color: #2e7d32;
+      outline: none;
+    }
+
+    .cta-button {
+      text-decoration: none;
+      display: inline-block;
+      background: #2e7d32;
+      color: white;
+      font-weight: 700;
+      padding: 1rem 2.5rem;
+      border-radius: 35px;
+      font-size: 1.25rem;
+      text-align: center;
+      margin: 0 auto 3rem auto;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 5px 15px rgba(46,125,50,0.4);
+      cursor: pointer;
+      display: block;
+      max-width: 280px;
+      user-select: none;
+    }
+    .cta-button:hover, .cta-button:focus {
+      background: #1b4d16;
+      box-shadow: 0 8px 25px rgba(27,77,22,0.7);
+      transform: scale(1.05);
+      outline: none;
+    }
+    #participate {
+      background: #f1f8f5;
+      border-radius: 12px;
+      padding: 2rem 1.5rem 3rem;
+      box-shadow: 0 6px 20px rgba(46, 125, 50, 0.1);
+      margin-bottom: 4rem;
+      text-align: left;
+    }
+    #participate h2 {
+      color: #2e7d32;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-family: "Georgia", serif;
+      text-align: center;
+    }
+    #participate p {
+      font-size: 1.15rem;
+      color: #34495e;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+    label {
+      font-weight: 600;
+      color: #2e7d32;
+      font-size: 1rem;
+      user-select: none;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1.7px solid #b2dfdb;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: #2e7d32;
+      outline: none;
+      box-shadow: 0 0 8px #2e7d32aa;
+    }
+    .form-error {
+      color: #b71c1c;
+      font-size: 0.9rem;
+      font-weight: 600;
+      user-select: none;
+      margin-top: -0.8rem;
+      margin-bottom: 0.6rem;
+    }
+    button[type="submit"] {
+      background: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 35px;
+      padding: 1rem 0;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(46,125,50,0.5);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+    }
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background: #1b4d16;
+      transform: scale(1.05);
+      outline: none;
+    }
+    footer {
+      background: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 1rem 1rem;
+      font-size: 0.9rem;
+      user-select: none;
+      box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+    }
+    #thank-you-screen {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
+      top: 0; left: 0;
+      background: #2e7d32;
+      color: white;
+      font-family: "Georgia", serif;
+      text-align: center;
+      padding: 4rem 1rem;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #thank-you-screen h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    }
+    #thank-you-screen p {
+      font-size: 1.5rem;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      line-height: 1.4;
+    }
+    #thank-you-screen button {
+      background: white;
+      color: #2e7d32;
+      border-radius: 35px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 1rem 3rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255,255,255,0.7);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+    }
+    #thank-you-screen button:hover,
+    #thank-you-screen button:focus {
+      background: #c8e6c9;
+      outline: none;
+      transform: scale(1.05);
+    }
+    section.info-section {
+      background: #e8f5e9;
+      padding: 1.5rem 1rem;
+      border-radius: 12px;
+      margin-bottom: 3rem;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 12px rgba(46,125,50,0.1);
+    }
+    section.info-section h2 {
+      font-family: "Georgia", serif;
+      color: #2e7d32;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    section.info-section ul {
+      list-style: disc inside;
+      color: #34495e;
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+    }
+    section.info-section ul li {
+      margin-bottom: 0.6rem;
+    }
+    section.info-section a.more-info-link {
+      display: inline-block;
+      background: #2e7d32;
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(46,125,50,0.5);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      margin: 0 auto;
+    }
+    section.info-section a.more-info-link:hover,
+    section.info-section a.more-info-link:focus {
+      background: #1b4d16;
+      transform: scale(1.05);
+      outline: none;
+    }
+    @media (max-width: 700px) {
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+      .feature {
+        max-width: 90%;
+      }
+      main {
+        padding: 1.25rem 1rem;
+      }
+      #thank-you-screen h1 {
+        font-size: 2.5rem;
+      }
+      #thank-you-screen p {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Agrinho 2025</h1>
+  <p>Construindo um futuro sustentável com educação, saúde e respeito ao meio ambiente</p>
+</header>
+<nav aria-label="Navegação principal">
+  <ul>
+    <li><a href="#features">Valores</a></li>
+    <li><a href="#information">Informativos</a></li>
+    <li><a href="#participate">Participe</a></li>
+  </ul>
+</nav>
+<main id="main-content">
+  <section id="features" class="features" aria-label="Valores do Agrinho 2025">
+    <article class="feature" tabindex="0" aria-expanded="false" aria-controls="feat1details" role="button" aria-describedby="feat1desc" aria-label="Sustentabilidade. Pressione para mais informações">
+      <div class="feature-icon" aria-hidden="true">🌱</div>
+      <h3 id="feat1desc">Sustentabilidade</h3>
+      <p>Práticas agrícolas conscientes que respeitam a natureza e garantem recursos para futuras gerações.</p>
+      <div id="feat1details" class="feature-details" aria-hidden="true">
+        A Sustentabilidade envolve a proteção dos recursos naturais e práticas responsáveis para garantir o equilíbrio ambiental. <br />
+        <a href="https://www.agricultura.gov.br/assuntos/sustentabilidade" target="_blank" rel="noopener noreferrer" class="info-links" aria-label="Saiba mais sobre sustentabilidade na agricultura">Saiba mais</a>
+      </div>
+    </article>
+    <article class="feature" tabindex="0" aria-expanded="false" aria-controls="feat2details" role="button" aria-describedby="feat2desc" aria-label="Educação. Pressione para mais informações">
+      <div class="feature-icon" aria-hidden="true">📚</div>
+      <h3 id="feat2desc">Educação</h3>
+      <p>Valorizar o conhecimento e incentivar os jovens sobre agricultura, cidadania e meio ambiente.</p>
+      <div id="feat2details" class="feature-details" aria-hidden="true">
+        Educação transforma vidas, capacitando jovens para um futuro consciente e responsável. <br />
+        <a href="https://www.educacao.gov.br/temas/educacao-rural" target="_blank" rel="noopener noreferrer" class="info-links" aria-label="Saiba mais sobre educação rural">Saiba mais</a>
+      </div>
+    </article>
+    <article class="feature" tabindex="0" aria-expanded="false" aria-controls="feat3details" role="button" aria-describedby="feat3desc" aria-label="Saúde. Pressione para mais informações">
+      <div class="feature-icon" aria-hidden="true">❤️</div>
+      <h3 id="feat3desc">Saúde</h3>
+      <p>Encorajar hábitos saudáveis e preservar a vida nas comunidades rurais.</p>
+      <div id="feat3details" class="feature-details" aria-hidden="true">
+        Saúde é prioridade para garantir qualidade de vida, promovendo práticas e cuidados essenciais. <br />
+        <a href="https://www.saude.gov.br/atencao-basica" target="_blank" rel="noopener noreferrer" class="info-links" aria-label="Saiba mais sobre atenção básica em saúde">Saiba mais</a>
+      </div>
+    </article>
+  </section>
+
+  <section id="information" class="info-section" aria-label="Informativos do Agrinho 2025">
+    <h2>Informativos e Recursos</h2>
+    <ul>
+      <li><a href="https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1121112/praticas-agricolas-sustentaveis" target="_blank" rel="noopener noreferrer" aria-label="Documento Público sobre Práticas Agrícolas Sustentáveis">Práticas Agrícolas Sustentáveis - Embrapa</a></li>
+      <li><a href="https://biblioteca.cnptia.embrapa.br/digital/bitstream/item/142582/1/Livro-do-agricultor.pdf" target="_blank" rel="noopener noreferrer" aria-label="Livro do Agricultor para download">Livro do Agricultor - Guia de Boas Práticas</a></li>
+      <li><a href="https://agricultura.gov.br/assuntos/cadeias-agropecuarias/agrinho" target="_blank" rel="noopener noreferrer" aria-label="Agrinho oficial no site do Ministério da Agricultura">Site Oficial Agrinho - Ministério da Agricultura</a></li>
+    </ul>
+    <a href="https://canaldaagricultura.com.br/" target="_blank" rel="noopener noreferrer" class="more-info-link" aria-label="Visitar Canal da Agricultura para mais vídeos e conteúdos">Explore Mais no Canal da Agricultura</a>
+  </section>
+
+  <a href="#participate" class="cta-button" role="button" aria-label="Ir para formulário de participação do Agrinho 2025">Participe do Agrinho 2025</a>
+
+  <section id="participate" style="max-width: 600px; margin: auto;">
+    <h2>Quer fazer parte dessa transformação?</h2>
+    <p>Inscreva sua escola ou comunidade e ajude a cultivar um futuro melhor para todos.</p>
+    <form id="participation-form" novalidate aria-describedby="form-instructions">
+      <div id="form-instructions" class="sr-only">Preencha o formulário para enviar sua inscrição</div>
+      <label for="name">Nome completo</label>
+      <input type="text" id="name" name="name" placeholder="Seu nome" aria-required="false" autocomplete="name" />
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="seu@email.com" aria-required="false" autocomplete="email" />
+      <div id="email-error" class="form-error" role="alert" aria-live="assertive" style="display:none;"></div>
+
+      <label for="message">Mensagem (opcional)</label>
+      <textarea id="message" name="message" rows="4" placeholder="Escreva sua mensagem"></textarea>
+
+      <button type="submit">Enviar inscrição</button>
+    </form>
+  </section>
+</main>
+<div id="thank-you-screen" role="dialog" aria-modal="true" aria-labelledby="thank-you-title" aria-describedby="thank-you-desc">
+  <h1 id="thank-you-title">Obrigado pela sua inscrição!</h1>
+  <p id="thank-you-desc">Sua intenção de participar do Agrinho 2025 foi recebida. Em breve, entraremos em contato.</p>
+  <button id="thank-you-close-btn" aria-label="Fechar mensagem de agradecimento e retornar à página">Voltar</button>
+</div>
+<footer>
+  <p>© 2025 Agrinho </p>
+</footer>
+
+<script>
+  // Smooth scroll for anchor links in nav and cta
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth'
+        });
+        // Move focus for better accessibility
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+      }
+    });
+  });
+
+  // Feature card expand/collapse interaction
+  const features = document.querySelectorAll('.feature');
+  features.forEach(feature => {
+    feature.addEventListener('click', () => {
+      const expanded = feature.classList.toggle('expanded');
+      feature.setAttribute('aria-expanded', expanded);
+      const details = feature.querySelector('.feature-details');
+      if (details) {
+        details.setAttribute('aria-hidden', !expanded);
+      }
+    });
+    // Allow toggling with keyboard as well
+    feature.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        feature.click();
+      }
+    });
+  });
+
+  const form = document.getElementById('participation-form');
+  const thankYouScreen = document.getElementById('thank-you-screen');
+  const mainContent = document.getElementById('main-content');
+  const footer = document.querySelector('footer');
+  const closeBtn = document.getElementById('thank-you-close-btn');
+  const emailError = document.getElementById('email-error');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Trim form values
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    // Clear previous email error
+    emailError.style.display = 'none';
+    emailError.textContent = '';
+
+    // Validate at least one field filled
+    if (name === '' && email === '' && message === '') {
+      alert('Por favor, preencha pelo menos um campo antes de enviar a inscrição.');
+      return;
+    }
+
+    // Validate email format if email provided
+    if (email !== '') {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        emailError.textContent = 'Por favor, insira um endereço de e-mail válido.';
+        emailError.style.display = 'block';
+        form.email.focus();
+        return;
+      }
+    }
+
+    // Disable submit button to prevent multiple submits
+    form.querySelector('button[type="submit"]').disabled = true;
+
+    // Show thank you screen
+    mainContent.style.display = 'none';
+    footer.style.display = 'none';
+    thankYouScreen.style.display = 'flex';
+
+    // Set focus on close button for accessibility
+    closeBtn.focus();
+  });
+
+  closeBtn.addEventListener('click', () => {
+    thankYouScreen.style.display = 'none';
+    mainContent.style.display = '';
+    footer.style.display = '';
+
+    // Enable submit button again
+    form.querySelector('button[type="submit"]').disabled = false;
+
+    // Reset form fields
+    form.reset();
+
+    // Clear email error
+    emailError.style.display = 'none';
+    emailError.textContent = '';
+
+    // Set focus back to form submit button for good UX
+    form.querySelector('button[type="submit"]').focus();
+  });
+
+  // Accessibility: trap focus inside thank-you-screen when visible
+  thankYouScreen.addEventListener('keydown', function(e) {
+    if (e.key === 'Tab') {
+      const focusableElements = thankYouScreen.querySelectorAll('button');
+      if (focusableElements.length === 0) return;
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
+      }
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      }
+    }
+    if (e.key === 'Escape') {
+      // Allow closing dialog with Escape
+      closeBtn.click();
+    }
+  });
+
+</script>
+</body>
+</html>
+
